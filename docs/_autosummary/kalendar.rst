@@ -1,0 +1,4 @@
+﻿kalendar
+========
+
+.. automodule:: kalendar

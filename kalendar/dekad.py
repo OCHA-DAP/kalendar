@@ -67,15 +67,11 @@ class Dekad(datetime.date):
             raise ValueError("Dekad must be between 1 and 36.")
         month = ((dekad - 1) // 3) + 1
         day = 10 * ((dekad - 1) % 3) + 1  # first day of dekad
-        return super().__new__(cls=cls, year=year, month=month, day=day)
+        return super().__new__(cls, year, month, day)  # noqa: FKA01
 
     def __repr__(self):
         """Represent ``Dekad``."""
         return f"{self.__class__.__name__}({self.year}, {self.dekad})"
-
-    def __getnewargs__(self):
-        """Get new args."""
-        return (self.year, self.dekad)
 
     def __reduce__(self):
         """Reduce."""
@@ -151,11 +147,6 @@ class Dekad(datetime.date):
         else:
             return self.todate() - other
 
-    @staticmethod
-    def _dekad_adjuster(d1, d2):
-        """Add or subtract d2 from d1 and keep within dekadal ranges."""
-        return (d1 + (d2 % 36) + 35) % 36 + 1
-
     @property
     def dekad(self):
         """Dekad of the object."""
@@ -202,6 +193,11 @@ class Dekad(datetime.date):
         are non-zero in the result.
         """
         return cls.fromdate(datetime.date.fromordinal(n))
+
+    @staticmethod
+    def _dekad_adjuster(d1, d2):
+        """Add or subtract d2 from d1 and keep within dekadal ranges."""
+        return (d1 + (d2 % 36) + 35) % 36 + 1
 
     @staticmethod
     def _get_dekad(month, day):

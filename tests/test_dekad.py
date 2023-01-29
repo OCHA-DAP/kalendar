@@ -79,3 +79,9 @@ def test_printing(dekad, capsys):
     print(dekad)  # noqa: T001
     out, _ = capsys.readouterr()
     assert out == "2022 D1\n"
+
+
+def test_dekad_month(dekad):
+    """Test monthly dekad."""
+    assert dekad.dekad_monthly == 1
+    assert (dekad + 2).dekad_monthly == 3

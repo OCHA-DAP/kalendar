@@ -1,7 +1,10 @@
 API Reference
 =============
 
-.. autosummary::
-   :toctree: _autosummary
+Dekad
+-----
 
-   kalendar.Dekad
+.. autoclass:: kalendar.Dekad
+    :members:
+    :undoc-members:
+    :special-members: __add__, __sub__

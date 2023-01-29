@@ -115,13 +115,6 @@ Versioning is handled by
 `setuptools_scm <https://github.com/pypa/setuptools_scm>`__, and the
 configuration for this can be found in ``pyproject.toml``
 
-The ``aa-toolbox`` package is built and published to
+The ``kalendar`` package is built and published to
 `PyPI <https://pypi.org/project/aa-toolbox/>`__ whenever a new tag is
-pushed. With each new commit, a development version is pushed to
-`TestPyPI <https://test.pypi.org/project/aa-toolbox>`__ and is available
-to install for testing purposes by running:
-
-.. code:: shell
-
-   pip install --index-url https://test.pypi.org/simple/
-   --extra-index-url https://pypi.org/simple aa-toolbox==$VERSION
+pushed.

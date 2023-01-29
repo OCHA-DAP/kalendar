@@ -132,7 +132,8 @@ class Dekad(datetime.date):
         Dekad(2021, 36)
         >>> d1 - d2
         36
-        >>> d1 - datetime.date(2022, 12, 30)
+        >>> d1 - datetime.date(2021, 12, 30)
+        datetime.timedelta(days=2)
 
         Returns
         -------

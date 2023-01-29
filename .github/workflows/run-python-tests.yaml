@@ -47,4 +47,4 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          files: artifacts/**/*.xml
+          junit_files: artifacts/**/*.xml

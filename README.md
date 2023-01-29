@@ -31,12 +31,12 @@ d - 1
 ## Contributing
 
 For guidance on setting up a development environment, see the
-[contributing guidelines](https://github.com/OCHA-DAP/pa-aa-toolbox/blob/main/CONTRIBUTING.rst)
+[contributing guidelines](https://github.com/OCHA-DAP/kalendar/blob/main/CONTRIBUTING.rst)
 
 ## Links
 
 - [Documentation](https://kalendar.readthedocs.io/en/latest/)
-- [Changes](https://github.com/OCHA-DAP/pa-aa-toolbox/blob/main/CHANGELOG.rst)
-- [PyPI Releases](https://pypi.org/project/aa-toolbox/)
-- [Source Code](https://github.com/OCHA-DAP/pa-aa-toolbox)
-- [Issue Tracker](https://github.com/OCHA-DAP/pa-aa-toolbox/issues)
+- [Changes](https://github.com/OCHA-DAP/kalendar/blob/main/CHANGELOG.rst)
+- [PyPI Releases](https://pypi.org/project/kalendar/)
+- [Source Code](https://github.com/OCHA-DAP/kalendar)
+- [Issue Tracker](https://github.com/OCHA-DAP/kalendar/issues)

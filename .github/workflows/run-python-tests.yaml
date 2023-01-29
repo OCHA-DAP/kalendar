@@ -11,9 +11,9 @@ jobs:
       matrix:
         python-version: ['3.8', '3.9', '3.10', '3.11']
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install Python dependencies
@@ -25,12 +25,12 @@ jobs:
         tox
     - name: Upload test results
       if: always()
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: py${{ matrix.python-version }}
         path: .tox/test-results.xml
     - name: Upload coverage results to Codecov
-      uses: codecov/codecov-action@v2
+      uses: codecov/codecov-action@v3
       if: success() && matrix.python-version == 3.11
 
   publish-test-results:
@@ -40,11 +40,11 @@ jobs:
     if: always()
     steps:
       - name: Download Artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           path: artifacts
       - name: Publish test results to GitHub
-        uses: EnricoMi/publish-unit-test-result-action@v2
+        uses: EnricoMi/publish-unit-test-result-action@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           files: artifacts/**/*.xml

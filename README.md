@@ -19,14 +19,16 @@ pip install kalendar
 The dekadal and pentadal classes are simple subclasses with convenient
 constructors for creating the class from ``datetime`` objects (and
 inherited constructors from ``datetime.date``), methods for addition
-and subtraction, and converting back to ``datetime.date`` objects. See the
-documentation for full examples.
+and subtraction, and converting back to ``datetime.date`` objects.
 
 ```python
 from kalendar import Dekad
 d = Dekad(2022, 1)
 d - 1
 ```
+
+See the [documentation](https://kalendar.readthedocs.io/en/latest/) for
+full examples.
 
 ## Contributing
 

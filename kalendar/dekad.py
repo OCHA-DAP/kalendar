@@ -22,7 +22,9 @@ class Dekad(datetime.date):
     21st. Extension of ``datetime.date``
     allows for comparison of dekads and conversion between
     classes and use of existing constructors, methods, and properties,
-    with some additions detailed below.
+    with some additions detailed below. For the purposes of the class
+    structure, the yearly definition is relied on, but the monthly
+    dekad (1st to 3rd) can be accessed using ``dekad_monthly``.
 
     Base constructor takes year and dekad. Can
     also be constructed directly from ``datetime.date``
@@ -38,7 +40,8 @@ class Dekad(datetime.date):
 
     Method to return ``datetime.date`` object
     added, ``todate()``. Other methods remain
-    available. Read-only property ``dekad`` added
+    available. Read-only properties ``dekad`` and
+    ``dekad_monthly`` added
     alongside year, month, and day.
 
     Parameters
@@ -149,18 +152,23 @@ class Dekad(datetime.date):
 
     @property
     def dekad(self):
-        """Dekad of the object."""
+        """Dekad of the year, 1 to 36."""
         return self._get_dekad(month=self.month, day=self.day)
+
+    @property
+    def dekad_monthly(self):
+        """Dekad of the month, 1 to 3."""
+        return 1 + (self.day - 1) // 10
 
     def todate(self):
         """Convert to datetime.date object for the year, month, and day."""
         return datetime.date(year=self.year, month=self.month, day=self.day)
 
     @classmethod
-    def fromdate(cls, dt: datetime.date) -> Dekad:
+    def fromdate(cls, d: datetime.date) -> Dekad:
         """Construct a dekad from a datetime.date object."""
-        dekad = cls._get_dekad(month=dt.month, day=dt.day)
-        return cls(year=dt.year, dekad=dekad)
+        dekad = cls._get_dekad(month=d.month, day=d.day)
+        return cls(year=d.year, dekad=dekad)
 
     @classmethod
     def fromdatetime(cls, dt: datetime.datetime) -> Dekad:
@@ -195,11 +203,11 @@ class Dekad(datetime.date):
         return cls.fromdate(datetime.date.fromordinal(n))
 
     @staticmethod
-    def _dekad_adjuster(d1, d2):
+    def _dekad_adjuster(d1: int, d2: int) -> int:
         """Add or subtract d2 from d1 and keep within dekadal ranges."""
         return (d1 + (d2 % 36) + 35) % 36 + 1
 
     @staticmethod
-    def _get_dekad(month, day):
+    def _get_dekad(month: int, day: int) -> int:
         """Get dekad from day and month."""
         return min((day - 1) // 10, 2) + ((month - 1) * 3) + 1

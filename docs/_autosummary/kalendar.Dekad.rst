@@ -42,6 +42,7 @@
 
       ~Dekad.day
       ~Dekad.dekad
+      ~Dekad.dekad_monthly
       ~Dekad.max
       ~Dekad.min
       ~Dekad.month

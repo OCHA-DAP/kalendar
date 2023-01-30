@@ -8,8 +8,23 @@ Changelog <https://keepachangelog.com/en/1.0.0/>`__, and this project
 adheres to `Semantic
 Versioning <https://semver.org/spec/v2.0.0.html>`__.
 
-Unreleased
+0.0.2
 ----------
+
+Removed
+~~~~~~~
+
+- Python 3.7 support
+
+Changed
+~~~~~~~
+
+- Directory structure to use ``src`` folder
+- Fixed testing to include coverage
+- Published to PyPi
+
+0.0.1
+-----
 
 Added
 ~~~~~

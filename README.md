@@ -2,7 +2,7 @@
 
 [![license](https://img.shields.io/github/license/OCHA-DAP/kalendar.svg)](https://github.com/OCHA-DAP/kalendar/blob/main/LICENSE)
 [![Test Status](https://github.com/OCHA-DAP/kalendar/workflows/tests/badge.svg)](https://github.com/OCHA-DAP/kalendar/actions?query=workflow%3Atests)
-[![PyPI Status](https://github.com/OCHA-DAP/kalendar/workflows/PyPi/badge.svg)](https://github.com/OCHA-DAP/kalendar/actions?query=workflow%3APyPi)
+[![PyPI Status](https://github.com/OCHA-DAP/kalendar/workflows/PyPI/badge.svg)](https://github.com/OCHA-DAP/kalendar/actions?query=workflow%3APyPI)
 [![Documentation Status](https://readthedocs.org/projects/kalendar/badge/?version=latest)](https://kalendar.readthedocs.io/en/latest/?badge=latest)
 [![Coverage Status](https://codecov.io/gh/OCHA-DAP/kalendar/branch/main/graph/badge.svg?token=JpWZc5js4y)](https://codecov.io/gh/OCHA-DAP/kalendar)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)

@@ -11,6 +11,20 @@ Versioning <https://semver.org/spec/v2.0.0.html>`__.
 Unreleased
 ----------
 
+Removed
+~~~~~~~
+
+- Python 3.7 support
+
+Changed
+~~~~~~~
+
+- Directory structure to use ``src`` folder
+- Fixed testing to include coverage
+
+0.0.1
+-----
+
 Added
 ~~~~~
 

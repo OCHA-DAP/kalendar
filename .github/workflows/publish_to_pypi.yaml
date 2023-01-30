@@ -13,6 +13,8 @@ jobs:
           git fetch --prune --unshallow
           git fetch --depth=1 origin +refs/tags/*:refs/tags/*
       - run: python3 -m pip install --upgrade build && python3 -m build
+      - name: Build a binary wheel and a source tarball
+        run: python -m build --sdist --wheel --outdir dist/ .
       - name: Publish package
         uses: pypa/gh-action-pypi-publish@release/v1
         with:

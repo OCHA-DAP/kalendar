@@ -11,8 +11,8 @@ jobs:
           fetch-depth: 0 
       - name: Set up Python 3.11
         uses: actions/setup-python@v2
-          with:
-            python-version: 3.11
+        with:
+          python-version: 3.11
       - name: Build a binary wheel and a source tarball
         run: python -m build --sdist --wheel --outdir dist/ .
       - name: Publish package

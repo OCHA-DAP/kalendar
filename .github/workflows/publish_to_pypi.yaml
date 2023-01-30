@@ -2,6 +2,7 @@ name: PyPI
 on:
   release:
     types: [published]
+    tags: - '*'
 jobs:
   pypi:
     runs-on: ubuntu-latest

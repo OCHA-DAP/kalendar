@@ -110,7 +110,7 @@ class Dekad(datetime.date):
             new_dekad = self._dekad_adjuster(self.dekad, other)
             return Dekad(year=new_year, dekad=new_dekad)
         else:
-            return self.todate() + other
+            return self.todate() + other  # type: ignore
 
     def __sub__(  # type: ignore[override]
         self, other: Union[int, Dekad, datetime.timedelta]
@@ -149,19 +149,19 @@ class Dekad(datetime.date):
         if isinstance(other, Dekad):
             return self.dekad - other.dekad + 36 * (self.year - other.year)
         else:
-            return self.todate() - other
+            return self.todate() - other  # type: ignore
 
     @property
-    def dekad(self):
+    def dekad(self) -> int:
         """Dekad of the year, 1 to 36."""
         return self._get_dekad(month=self.month, day=self.day)
 
     @property
-    def dekad_monthly(self):
+    def dekad_monthly(self) -> int:
         """Dekad of the month, 1 to 3."""
         return 1 + (self.day - 1) // 10
 
-    def todate(self):
+    def todate(self) -> datetime.date:
         """Convert to datetime.date object for the year, month, and day."""
         return datetime.date(year=self.year, month=self.month, day=self.day)
 

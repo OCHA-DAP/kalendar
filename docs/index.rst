@@ -16,9 +16,9 @@ and subtraction, and converting back to ``datetime.date`` objects.
 
 .. code-block:: python
 
-   from kalendar import Dekad
+   from kalendar import Dekad, Pentad
    d = Dekad(2022, 1)
-   d - 1
+   p = Pentad(2012, 46)
 
 The below API provides more details and examples on the classes' usage.
 

@@ -2,5 +2,6 @@
 
 from ._version import __version__
 from .dekad import Dekad
+from .pentad import Pentad
 
-__all__ = ["Dekad", "__version__"]
+__all__ = ["Dekad", "Pentad", "__version__"]

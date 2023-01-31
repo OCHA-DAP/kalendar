@@ -69,7 +69,7 @@ class Pentad(datetime.date):
 
         # get pentad month and day from non-leap year
         dt = datetime.date(year=2010, month=1, day=1) + datetime.timedelta(
-            pentad * 5 - 1
+            (pentad - 1) * 5
         )
 
         return super().__new__(cls, year, dt.month, dt.day)  # noqa: FKA01

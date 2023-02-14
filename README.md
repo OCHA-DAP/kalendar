@@ -11,7 +11,7 @@
 In climatology, data is often reported in multi-day formats, such
 as dekads (a 10 day definition) or pentads (a 5 day definition).
 kalendar is a Python package with ``datetime.date`` extensions
-for dekadal and pentadal (coming) calendar definitions that make
+for dekadal and pentadal calendar definitions that make
 it easier to work with such climate data.
 
 ## Installing
@@ -30,9 +30,9 @@ inherited constructors from ``datetime.date``), methods for addition
 and subtraction, and converting back to ``datetime.date`` objects.
 
 ```python
-from kalendar import Dekad
+from kalendar import Dekad, Pentad
 d = Dekad(2022, 1)
-d - 1
+p = Pentad(2013, 51)
 ```
 
 See the [documentation](https://kalendar.readthedocs.io/en/latest/) for

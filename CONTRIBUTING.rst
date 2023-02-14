@@ -17,18 +17,16 @@ development by running:
 
 .. code:: shell
 
-   pip install .[dev]
-
-If using ZSH, you need to wrap the last term in quotes, `'.[dev]'`.
+   pip install -r requirements/requirements-dev.txt
 
 Installation
 ------------
 
-To install in editable mode for development, execute:
+To install kalendar in editable mode for development, execute:
 
 .. code:: shell
 
-   pip install -e .[dev]
+   pip install -e .
 
 Testing
 -------
@@ -40,7 +38,7 @@ To run the tests and view coverage, execute:
    python -m pytest --cov=kalendar
 
 Directly running pytest may
-[produce errors](https://stackoverflow.com/questions/40718770/pytest-running-with-another-version-of-python).
+`produce errors<https://stackoverflow.com/questions/40718770/pytest-running-with-another-version-of-python>`__.
 by testing using a Python version or environment different from
 the local development environment, hence we recommend running
 as above.

@@ -8,8 +8,26 @@ Changelog <https://keepachangelog.com/en/1.0.0/>`__, and this project
 adheres to `Semantic
 Versioning <https://semver.org/spec/v2.0.0.html>`__.
 
-0.0.2
+Unreleased
 ----------
+
+Added
+~~~~~
+
+- Pentad class
+
+Fixed
+~~~~~
+
+- ``CONTRIBUTING.rst`` broken links repaired
+
+Changed
+~~~~~~~
+
+- Use fixed `requirements.txt` file for development
+
+0.0.2
+-----
 
 Removed
 ~~~~~~~

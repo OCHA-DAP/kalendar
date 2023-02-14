@@ -53,7 +53,7 @@ class Dekad(datetime.date):
 
     Examples
     --------
-    >>> d = Dekad(2022, 01)
+    >>> d = Dekad(2022, 1)
     >>> d
     Dekad(2022, 1)
     >>> d.todate()
@@ -86,7 +86,7 @@ class Dekad(datetime.date):
 
     def __add__(  # type: ignore[override]
         self, other: Union[int, datetime.timedelta]
-    ) -> Union[Dekad, datetime.timedelta]:
+    ) -> Union[Dekad, datetime.date]:
         """Addition magic method for dekads.
 
         For integers, adds that to the dekads and returns a new
@@ -101,16 +101,21 @@ class Dekad(datetime.date):
 
         Returns
         -------
-        Union[Dekad, datetime.timedelta]
+        Union[Dekad, datetime.date]
             Returns ``Dekad`` if adding integer, or
-            ``datetime.timedelta`` otherwise.
+            ``datetime.date`` otherwise.
         """
         if isinstance(other, int):
             new_year = self.year + (self.dekad + other) // 36
             new_dekad = self._dekad_adjuster(self.dekad, other)
             return Dekad(year=new_year, dekad=new_dekad)
-        else:
+        try:
             return self.todate() + other
+        except TypeError as e:
+            raise TypeError(
+                f"unsupported operand type(s) for +: "
+                f"'Dekad' and {type(other).__name__}"
+            ) from e
 
     def __sub__(  # type: ignore[override]
         self, other: Union[int, Dekad, datetime.timedelta]
@@ -148,20 +153,25 @@ class Dekad(datetime.date):
             return Dekad(year=new_year, dekad=new_dekad)
         if isinstance(other, Dekad):
             return self.dekad - other.dekad + 36 * (self.year - other.year)
-        else:
-            return self.todate() - other
+        try:
+            return self.todate() - other  # type: ignore
+        except TypeError as e:
+            raise TypeError(
+                f"unsupported operand type(s) for -: "
+                f"'Dekad' and {type(other).__name__}"
+            ) from e
 
     @property
-    def dekad(self):
+    def dekad(self) -> int:
         """Dekad of the year, 1 to 36."""
         return self._get_dekad(month=self.month, day=self.day)
 
     @property
-    def dekad_monthly(self):
+    def dekad_monthly(self) -> int:
         """Dekad of the month, 1 to 3."""
         return 1 + (self.day - 1) // 10
 
-    def todate(self):
+    def todate(self) -> datetime.date:
         """Convert to datetime.date object for the year, month, and day."""
         return datetime.date(year=self.year, month=self.month, day=self.day)
 

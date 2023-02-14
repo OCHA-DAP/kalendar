@@ -16,6 +16,16 @@ Added
 
 - Pentad class
 
+Fixed
+~~~~~
+
+- ``CONTRIBUTING.rst`` broken links repaired
+
+Changed
+~~~~~~~
+
+- Use fixed `requirements.txt` file for development
+
 0.0.2
 -----
 

@@ -38,7 +38,7 @@ To run the tests and view coverage, execute:
    python -m pytest --cov=kalendar
 
 Directly running pytest may
-`produce errors<https://stackoverflow.com/questions/40718770/pytest-running-with-another-version-of-python>`__.
+`produce errors <https://stackoverflow.com/questions/40718770/pytest-running-with-another-version-of-python>`__.
 by testing using a Python version or environment different from
 the local development environment, hence we recommend running
 as above.

@@ -88,7 +88,7 @@ class Pentad(datetime.date):
 
     def __add__(  # type: ignore[override]
         self, other: Union[int, datetime.timedelta]
-    ) -> Union[Pentad, datetime.timedelta]:
+    ) -> Union[Pentad, datetime.date]:
         """Addition magic method for pentads.
 
         For integers, adds that to the pentads and returns a new
@@ -103,16 +103,21 @@ class Pentad(datetime.date):
 
         Returns
         -------
-        Union[Pentad, datetime.timedelta]
+        Union[Pentad, datetime.date]
             Returns ``Pentad`` if adding integer, or
-            ``datetime.timedelta`` otherwise.
+            ``datetime.date`` otherwise.
         """
         if isinstance(other, int):
             new_year = self.year + (self.pentad + other) // 73
             new_pentad = self._pentad_adjuster(self.pentad, other)
             return Pentad(year=new_year, pentad=new_pentad)  # type: ignore
-        else:
-            return self.todate() + other  # type: ignore
+        try:
+            return self.todate() + other
+        except TypeError as e:
+            raise TypeError(
+                f"unsupported operand type(s) for +: "
+                f"'Pentad' and {type(other).__name__}"
+            ) from e
 
     def __sub__(  # type: ignore[override]
         self, other: Union[int, Pentad, datetime.timedelta]
@@ -152,8 +157,13 @@ class Pentad(datetime.date):
             pentad_diff = self.pentad - other.pentad
             year_diff = 73 * (self.year - other.year)
             return pentad_diff + year_diff  # type: ignore
-        else:
+        try:
             return self.todate() - other  # type: ignore
+        except TypeError as e:
+            raise TypeError(
+                f"unsupported operand type(s) for -: "
+                f"'Pentad' and {type(other).__name__}"
+            ) from e
 
     @property
     def pentad(self) -> int:

@@ -53,7 +53,7 @@ class Dekad(datetime.date):
 
     Examples
     --------
-    >>> d = Dekad(2022, 01)
+    >>> d = Dekad(2022, 1)
     >>> d
     Dekad(2022, 1)
     >>> d.todate()
@@ -86,7 +86,7 @@ class Dekad(datetime.date):
 
     def __add__(  # type: ignore[override]
         self, other: Union[int, datetime.timedelta]
-    ) -> Union[Dekad, datetime.timedelta]:
+    ) -> Union[Dekad, datetime.date]:
         """Addition magic method for dekads.
 
         For integers, adds that to the dekads and returns a new
@@ -101,16 +101,21 @@ class Dekad(datetime.date):
 
         Returns
         -------
-        Union[Dekad, datetime.timedelta]
+        Union[Dekad, datetime.date]
             Returns ``Dekad`` if adding integer, or
-            ``datetime.timedelta`` otherwise.
+            ``datetime.date`` otherwise.
         """
         if isinstance(other, int):
             new_year = self.year + (self.dekad + other) // 36
             new_dekad = self._dekad_adjuster(self.dekad, other)
             return Dekad(year=new_year, dekad=new_dekad)
-        else:
-            return self.todate() + other  # type: ignore
+        try:
+            return self.todate() + other
+        except TypeError as e:
+            raise TypeError(
+                f"unsupported operand type(s) for +: "
+                f"'Dekad' and {type(other).__name__}"
+            ) from e
 
     def __sub__(  # type: ignore[override]
         self, other: Union[int, Dekad, datetime.timedelta]
@@ -148,8 +153,13 @@ class Dekad(datetime.date):
             return Dekad(year=new_year, dekad=new_dekad)
         if isinstance(other, Dekad):
             return self.dekad - other.dekad + 36 * (self.year - other.year)
-        else:
+        try:
             return self.todate() - other  # type: ignore
+        except TypeError as e:
+            raise TypeError(
+                f"unsupported operand type(s) for -: "
+                f"'Dekad' and {type(other).__name__}"
+            ) from e
 
     @property
     def dekad(self) -> int:

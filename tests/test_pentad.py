@@ -17,6 +17,7 @@ def pentad():
 def test_addition(pentad):
     """Test addition magic method."""
     assert pentad + 1 == Pentad(2022, 2)
+    assert pentad + 72 == Pentad(2022, 73)
     assert pentad + 75 == Pentad(2023, 3)
     assert pentad + timedelta(days=1) == date(year=2022, month=1, day=2)
 

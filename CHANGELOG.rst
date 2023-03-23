@@ -8,6 +8,14 @@ Changelog <https://keepachangelog.com/en/1.0.0/>`__, and this project
 adheres to `Semantic
 Versioning <https://semver.org/spec/v2.0.0.html>`__.
 
+0.1.1
+-----
+
+Fixed
+~~~~~
+
+- Addition now correctly calculates the new year on the boundary for dekad and pentad
+
 0.1.0
 -----
 

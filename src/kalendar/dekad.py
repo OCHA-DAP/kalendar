@@ -106,7 +106,7 @@ class Dekad(datetime.date):
             ``datetime.date`` otherwise.
         """
         if isinstance(other, int):
-            new_year = self.year + (self.dekad + other) // 36
+            new_year = self.year + (self.dekad + other - 1) // 36
             new_dekad = self._dekad_adjuster(self.dekad, other)
             return Dekad(year=new_year, dekad=new_dekad)
         try:

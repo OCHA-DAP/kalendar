@@ -108,7 +108,7 @@ class Pentad(datetime.date):
             ``datetime.date`` otherwise.
         """
         if isinstance(other, int):
-            new_year = self.year + (self.pentad + other) // 73
+            new_year = self.year + (self.pentad + other - 1) // 73
             new_pentad = self._pentad_adjuster(self.pentad, other)
             return Pentad(year=new_year, pentad=new_pentad)  # type: ignore
         try:
